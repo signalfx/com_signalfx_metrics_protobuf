@@ -1,0 +1,9 @@
+bin/
+local/
+
+# GoLand IDEA
+/.idea/
+*.iml
+
+# VS Code
+.vscode
