@@ -1,7 +1,7 @@
 PROTOC := protoc
 PROTO_INCLUDES := \
 	-I proto \
-	-I $(GOPATH)/src/github.com/gogo/protobuf
+	-I $(shell go env GOPATH)/pkg/mod/github.com/gogo/protobuf@v1.3.1
 
 # Remapping of std types to gogo types (must not contain spaces)
 PROTO_GOGO_MAPPINGS := $(shell echo \
@@ -22,7 +22,7 @@ proto:
 	$(PROTOC) \
 		$(PROTO_INCLUDES) \
 		--gogo_out=plugins=grpc,$(PROTO_GOGO_MAPPINGS):$(PWD)/model/ \
-		proto/model.proto
+		proto/signalfx_metrics.proto
 
 .PHONY: proto-install
 proto-install:
