@@ -17,22 +17,20 @@ option (gogoproto.sizer_all) = true;
 option (gogoproto.goproto_registration) = true;
 
 enum MetricType {
-  /**
-   * Numerical: Periodic, instantaneous measurement of some state.
-   */
+  // Periodic, instantaneous numerical measurement of some state.
   GAUGE = 0;
-  /**
-   * Numerical: Count of occurrences. Generally non-negative integers.
-   */
+
+  // Counts of occurrences since last report. Generally non-negative integers.
   COUNTER = 1;
-  /**
-   * String: Used for non-continuous quantities (that is, measurements where there is a fixed
-   * set of meaningful values). This is essentially a special case of gauge.
-   */
+
+  // Used for non-continuous quantities (that is, measurements where there is a fixed
+  // set of meaningful values). This is essentially a special case of gauge that reports a string value.
   ENUM = 2;
-  /**
-   * Tracks a value that increases over time, where only the difference is important.
-   */
+
+  // Tracks a value that increases over time, where only the difference is important.
+  //
+  // Counts of occurrences since since a fixed start time. This means that the current value
+  // depends on all previous measurements since the start time.
   CUMULATIVE_COUNTER = 3;
 }
 
